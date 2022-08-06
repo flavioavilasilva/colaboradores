@@ -1,0 +1,16 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'Rakefile'
+    - 'Gemfile'
+    - 'vendor/**/*'
+    - 'spec/*'
+    - 'config/**/*'
+    - 'db/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+  TargetRubyVersion: 2.6
+  SuggestExtensions: false
