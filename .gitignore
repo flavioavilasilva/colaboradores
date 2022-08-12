@@ -33,3 +33,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Simplecov files
+# Ignore test-related files
+/coverage.data
+/coverage/
+
+.byebug_history
