@@ -35,6 +35,8 @@
 /config/master.key
 
 # Simplecov files
-/coverage/*
+# Ignore test-related files
+/coverage.data
+/coverage/
 
 .byebug_history

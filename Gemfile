@@ -50,9 +50,13 @@ gem "bootsnap", require: false
 
 # Use devise to autheticate
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'jwt'
 
 # Use cancan to define user permissions
 gem 'cancancan', '~> 3.4'
+
+# HTTP-header-based security mechanism that defines who’s allowed to interact with your API
+gem 'rack-cors'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -61,6 +65,8 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.15', '>= 2.15.2'
   gem 'simplecov', require: false, group: :test
   gem 'byebug'
+  gem 'dotenv-rails'
+  gem "factory_bot_rails"
 end
 
 group :development do
