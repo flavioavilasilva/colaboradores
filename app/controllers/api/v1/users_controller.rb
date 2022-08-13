@@ -19,7 +19,7 @@ module Api
       def create
         permitted_params = user_params
         @user = User.new(permitted_params)
-        byebug
+
         if @user.save
           token = encode_token({ user_id: @user.id })
           render json: { user: @user, token: token }
