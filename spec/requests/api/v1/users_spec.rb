@@ -49,6 +49,11 @@ RSpec.describe 'Api::V1::Users', type: :request do
           post api_v1_users_url, params: valid_attributes, headers: { authorization: "token #{valid_token_admin}" }
           expect(response).to be_successful
         end
+
+        it 'sends welcome e-mail user' do
+          expect { UserMailer.welcome_email.deliver_later }.to(have_enqueued_job.on_queue('default'))
+          post api_v1_users_url, params: valid_attributes, headers: { authorization: "token #{valid_token_admin}" }
+        end
       end
 
       context 'when the token is of a regular user' do
