@@ -10,7 +10,7 @@ module Api
       # before_action :authenticate_user!
       # GET /users
       def index
-        @users = User.all
+        @users = User.search_by(query)
       end
 
       # Authentication actions
@@ -52,6 +52,12 @@ module Api
       end
 
       private
+
+      def query
+        return if params[:query].nil?
+
+        params.require(:query).permit(:name, :email, :role_name)
+      end
 
       def user_params
         params.permit(

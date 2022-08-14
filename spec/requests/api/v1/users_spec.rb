@@ -20,7 +20,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
         expect(json_response.size).to eq 1
         expect(json_response.first['name']).to eq(user[:name])
         expect(json_response.first['email']).to eq(user[:email])
-        expect(json_response.first['role_id']).to eq(user[:role_id])
+        expect(json_response.first['role']).to eq(user.role.name)
       end
     end
 
