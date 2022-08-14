@@ -38,5 +38,8 @@
 # Ignore test-related files
 /coverage.data
 /coverage/*
+/coverage/.last_run.json
+/coverage/.resultset.json
+/coverage/index.html
 
 .byebug_history
