@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   def self.search_by(query)
     return order(:name, :asc) if query.nil?
-
+    
     return joins(:role).where('role.name': query[:role_name]).order('role.name', :asc) if search_by_role?(query)
 
     where(query).order(query.keys, :asc)
