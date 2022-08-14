@@ -16,4 +16,16 @@ class User < ApplicationRecord
   def admin?
     role.name.capitalize == 'Admin'
   end
+
+  def self.search_by(query)
+    return order(:name, :asc) if query.nil?
+
+    return joins(:role).where('role.name': query[:role_name]).order('role.name', :asc) if search_by_role?(query)
+
+    where(query).order(query.keys, :asc)
+  end
+
+  def self.search_by_role?(query)
+    query.keys.include?('role_name') || query.keys.include?(:role_name)
+  end
 end
