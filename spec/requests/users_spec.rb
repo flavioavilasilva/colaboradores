@@ -42,9 +42,8 @@ RSpec.describe '/users', type: :request do
   end
 
   describe 'GET /new' do
-    role_admin = Role.create!({ name: 'Admin', description: 'Can perform any CRUD operation on any resource' })
-    user_admin = User.create!({ name: 'User admin', email: 'admin@admin.com', password: 'admin1',
-                                password_confirmation: 'admin1', role_id: role_admin.id })
+    let(:role_admin) { create(:role, name: 'Admin') }
+    let(:user_admin) { create(:user, role: role_admin) }
 
     it 'renders a successful response' do
       sign_in user_admin

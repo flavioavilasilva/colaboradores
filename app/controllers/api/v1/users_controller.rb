@@ -2,40 +2,36 @@
 
 module Api
   module V1
-    class UsersController < Api::V1::ApplicationController
-      after_action :send_email_assync, only: %i[create]
+    # User API actions
+    class UsersController < Api::V1::BaseUserAuthController
       before_action :authorized, except: %i[login]
       load_and_authorize_resource class: 'User', except: %i[login]
 
-      # before_action :authenticate_user!
-      # GET /users
+      # GET api/v1/users?query[name]=xpto
       def index
         @users = User.search_by(query)
       end
 
-      # Authentication actions
-
-      # REGISTER
+      # POST api/v1/users
       def create
-        permitted_params = user_params
-        @user = User.new(permitted_params)
+        @user = CreateUserService.new(user_params).call
 
-        if @user.save
+        if @user
           token = encode_token({ user_id: @user.id })
           render json: { user: @user, token: token }
         else
-          render json: { error: 'Invalid email or password' }
+          render json: { error: 'Error' }
         end
       end
 
-      # DELETE /users/1 or /users/1.json
+      # DELETE api/v1/user/:id
       def destroy
         @user = User.find(params[:id])
         @user.destroy
         render json: { message: 'Delete user success' }
       end
 
-      # LOGGING IN
+      # POST api/v1/login
       def login
         @user = User.find_by(email: params[:email])
 
@@ -67,12 +63,6 @@ module Api
           :name,
           :role_id
         )
-      end
-
-      def send_email_assync
-        return if @user.id.blank?
-
-        UserMailer.with(user: @user).welcome_email.deliver_later
       end
     end
   end
