@@ -18,11 +18,7 @@ RSpec.describe '/roles', type: :request do
   # Role. As you add validations to Role, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
-  end
-
-  let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { name: 'Regular', description: 'Some description' }
   end
 
   describe 'GET /index' do
@@ -69,32 +65,21 @@ RSpec.describe '/roles', type: :request do
         expect(response).to redirect_to(role_url(Role.last))
       end
     end
-
-    context 'with invalid parameters' do
-      it 'does not create a new Role' do
-        expect do
-          post roles_url, params: { role: invalid_attributes }
-        end.to change(Role, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post roles_url, params: { role: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
   end
 
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { name: 'new_role', description: 'new description' }
       end
 
       it 'updates the requested role' do
         role = Role.create! valid_attributes
         patch role_url(role), params: { role: new_attributes }
         role.reload
-        skip('Add assertions for updated state')
+
+        expect(role.name).to eq new_attributes[:name]
+        expect(role.description).to eq new_attributes[:description]
       end
 
       it 'redirects to the role' do
@@ -102,14 +87,6 @@ RSpec.describe '/roles', type: :request do
         patch role_url(role), params: { role: new_attributes }
         role.reload
         expect(response).to redirect_to(role_url(role))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        role = Role.create! valid_attributes
-        patch role_url(role), params: { role: invalid_attributes }
-        expect(response).to be_successful
       end
     end
   end
