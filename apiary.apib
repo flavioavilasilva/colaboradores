@@ -11,7 +11,7 @@ Simples API com recursos de criação, listagem e remoção de usuários
 Esse endpoint fornece informações de um usuário já existente quando fornecidos dados de email e password, 
 você terá informações importantes como o token no retorno dela. 
 
-+ Request (application/json)
++ Request (application/json) 
 
         {
             "email": "admin@admin.com",
@@ -34,20 +34,23 @@ você terá informações importantes como o token no retorno dela.
                 "token": "xsdsfjksnfdjknsvdjknvsknfskjnfksdnfkjsdnfksnjdfkjs"
             }
 
-### List all user [GET]
+### List all user [GET /users]
 
 Endpoint para listagem de usuários, podem ser filtrados por nome, email e permissão. Necessita um token admin para tal ação.
 
-+ Request (application/json)
++ Request (application/json) 
 
-        {
-            "query": { "name": "User1", "email": "user1@provedor.com" }
-        }
+    + Headers
+
+            Authorization: Token jdsjkhfdaskjhckajs
+
+    + Body
+            
+            { 
+                "query": { "name": "User1", "email": "user1@provedor.com" }
+            }
 
 + Response 200 (application/json)
-    + Headers
-    
-            Authorization: token xsdsfjksnfdjknsvdjknvsknfskjnfksdnfkjsdnfksnjdfkjs
 
     + Body
 
@@ -65,21 +68,23 @@ Endpoint para listagem de usuários, podem ser filtrados por nome, email e permi
 
 Endpoint para criação de novo usuário, necessita um token admin para tal ação.
 
-+ Request (application/json)
-
-        {
-            "name": "User", 
-            "email": "user@outlook.com", 
-            "password": "123456", 
-            "password_confirmation": "123456",
-            "role_id": 1
-        }
-
-+ Response 201 (application/json)
++ Request (application/json) 
 
     + Headers
 
             Authorization: Token jdsjkhfdaskjhckajs
+
+    + Body
+
+            {
+                "name": "User", 
+                "email": "user@outlook.com", 
+                "password": "123456", 
+                "password_confirmation": "123456",
+                "role_id": 1
+            }
+
++ Response 201 (application/json)
 
     + Body
 
@@ -99,16 +104,16 @@ Endpoint para criação de novo usuário, necessita um token admin para tal aç�
 
 Endpoint para remoção usuário, necessita um token admin para tal ação.
 
-+ Response 200 (application/json)
-    
++ Request (application/json) 
+
     + Headers
 
             Authorization: Token jdsjkhfdaskjhckajs
+
++ Response 200 (application/json)
 
     + Body
 
             {
                 "message": "Delete user success"
             }
-
-        
