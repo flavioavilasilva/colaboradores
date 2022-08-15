@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-15T02:44:33-03:00">2022-08-15T02:44:33-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-15T03:43:11-03:00">2022-08-15T03:43:11-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  95.68%
+  95.85%
 </span>
 
      </span>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>556</b> relevant lines,
-    <span class="green"><b>532</b> lines covered</span> and
-    <span class="red"><b>24</b> lines missed. </span>
+    <b>554</b> relevant lines,
+    <span class="green"><b>531</b> lines covered</span> and
+    <span class="red"><b>23</b> lines missed. </span>
     (<span class="green">
-  95.68%
+  95.85%
 </span>
 )
   </div>
@@ -204,12 +204,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0c39828ae125eb63fed2fca655a37ea5f06ef751" class="src_link" title="app/services/create_user_service.rb">app/services/create_user_service.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">90.91 %</td>
-            <td class="cell--number">22</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">10</td>
-            <td class="cell--number">1</td>
-            <td class="cell--number">2.00</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">18</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">2.11</td>
             
           </tr>
         
@@ -337,7 +337,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#3a5fd985ec22e9559e949694f20041dbb8c21a0a" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">34</td>
+            <td class="cell--number">36</td>
             <td class="cell--number">15</td>
             <td class="cell--number">15</td>
             <td class="cell--number">0</td>
@@ -1405,7 +1405,7 @@
 
             
 
-            <code class="ruby">        if @user</code>
+            <code class="ruby">        if @user.errors.blank?</code>
           </li>
         </div>
       
@@ -1427,7 +1427,7 @@
 
             
 
-            <code class="ruby">          render json: { user: @user, token: token }</code>
+            <code class="ruby">          render json: { user: @user, token: token }, status: :created</code>
           </li>
         </div>
       
@@ -1449,7 +1449,7 @@
 
             
 
-            <code class="ruby">          render json: { error: &#39;Error&#39; }</code>
+            <code class="ruby">          render json: { errors: @user.errors.full_messages }, status: :bad_request</code>
           </li>
         </div>
       
@@ -4138,7 +4138,7 @@
     <h3>app/services/create_user_service.rb</h3>
     <h4>
       <span class="green">
-  90.91%
+  100.0%
 </span>
 
       lines covered
@@ -4147,9 +4147,9 @@
     
 
     <div class="t-line-summary">
-      <b>11</b> relevant lines.
-      <span class="green"><b>10</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>9</b> relevant lines.
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -4320,7 +4320,7 @@
 
             
 
-            <code class="ruby">    if user.save</code>
+            <code class="ruby">    UserMailer.with(user: user).welcome_email.deliver_later if user.save</code>
           </li>
         </div>
       
@@ -4331,56 +4331,12 @@
 
             
 
-            <code class="ruby">      UserMailer.with(user: user).welcome_email.deliver_later</code>
+            <code class="ruby">    user</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="17">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">      user</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
-            
-
-            <code class="ruby">    else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="19">
-            
-            
-
-            
-
-            <code class="ruby">      false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
+          <li class="never" data-hits="" data-linenumber="17">
             
             
 
@@ -4391,7 +4347,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="18">
             
             
 
@@ -10126,7 +10082,7 @@
 
             
 
-            <code class="ruby">  devise_for :users</code>
+            <code class="ruby">  devise_for :users,</code>
           </li>
         </div>
       
@@ -10137,29 +10093,29 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">          controllers: {</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="4">
+            
             
 
             
 
-            <code class="ruby">  devise_scope :user do</code>
+            <code class="ruby">            registrations: &#39;registrations&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="5">
+            
             
 
             
 
-            <code class="ruby">    authenticated :user do</code>
+            <code class="ruby">          }</code>
           </li>
         </div>
       
@@ -10170,12 +10126,34 @@
 
             
 
+            <code class="ruby">  devise_scope :user do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    authenticated :user do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="8">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      root &#39;users#index&#39;, as: :authenticated_root</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
@@ -10186,7 +10164,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -10197,7 +10175,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
+          <li class="covered" data-hits="1" data-linenumber="11">
             <span class="hits">1</span>
             
 
@@ -10208,7 +10186,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
+          <li class="covered" data-hits="1" data-linenumber="12">
             <span class="hits">1</span>
             
 
@@ -10219,7 +10197,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
+          <li class="never" data-hits="" data-linenumber="13">
             
             
 
@@ -10230,35 +10208,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="12">
+          <li class="never" data-hits="" data-linenumber="14">
             
             
 
             
 
             <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  resources :roles</code>
           </li>
         </div>
       
@@ -10280,7 +10236,7 @@
 
             
 
-            <code class="ruby">  resources :users</code>
+            <code class="ruby">  resources :roles</code>
           </li>
         </div>
       
@@ -10291,18 +10247,18 @@
 
             
 
-            <code class="ruby">  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  resources :users</code>
           </li>
         </div>
       
@@ -10313,7 +10269,7 @@
 
             
 
-            <code class="ruby">  # Defines the root path route (&quot;/&quot;)</code>
+            <code class="ruby">  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html</code>
           </li>
         </div>
       
@@ -10324,7 +10280,7 @@
 
             
 
-            <code class="ruby">  #root &quot;articles#index&quot;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10335,29 +10291,29 @@
 
             
 
+            <code class="ruby">  # Defines the root path route (&quot;/&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">  #root &quot;articles#index&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  namespace :api do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    namespace :v1 do</code>
           </li>
         </div>
       
@@ -10368,7 +10324,7 @@
 
             
 
-            <code class="ruby">      resources :users</code>
+            <code class="ruby">  namespace :api do</code>
           </li>
         </div>
       
@@ -10379,7 +10335,7 @@
 
             
 
-            <code class="ruby">      post &quot;/login&quot;, to: &quot;users#login&quot;</code>
+            <code class="ruby">    namespace :v1 do</code>
           </li>
         </div>
       
@@ -10390,7 +10346,7 @@
 
             
 
-            <code class="ruby">      get &quot;/auto_login&quot;, to: &quot;users#auto_login&quot; </code>
+            <code class="ruby">      resources :users</code>
           </li>
         </div>
       
@@ -10401,29 +10357,29 @@
 
             
 
+            <code class="ruby">      post &quot;/login&quot;, to: &quot;users#login&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="28">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      get &quot;/auto_login&quot;, to: &quot;users#auto_login&quot; </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      devise_for :users,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="28">
-            
-            
-
-            
-
-            <code class="ruby">             controllers: {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby">                 sessions: &#39;api/v1/sessions&#39;,</code>
           </li>
         </div>
       
@@ -10434,7 +10390,7 @@
 
             
 
-            <code class="ruby">                 registrations: &#39;api/v1/registrations&#39;</code>
+            <code class="ruby">             controllers: {</code>
           </li>
         </div>
       
@@ -10445,7 +10401,7 @@
 
             
 
-            <code class="ruby">             }</code>
+            <code class="ruby">                 sessions: &#39;api/v1/sessions&#39;,</code>
           </li>
         </div>
       
@@ -10456,7 +10412,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">                 registrations: &#39;api/v1/registrations&#39;</code>
           </li>
         </div>
       
@@ -10467,12 +10423,34 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">             }</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="34">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="35">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 

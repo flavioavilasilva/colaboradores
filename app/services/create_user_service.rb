@@ -12,11 +12,7 @@ class CreateUserService
   def call
     user = User.new(user_params)
 
-    if user.save
-      UserMailer.with(user: user).welcome_email.deliver_later
-      user
-    else
-      false
-    end
+    UserMailer.with(user: user).welcome_email.deliver_later if user.save
+    user
   end
 end

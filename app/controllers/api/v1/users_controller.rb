@@ -16,11 +16,11 @@ module Api
       def create
         @user = CreateUserService.new(user_params).call
 
-        if @user
+        if @user.errors.blank?
           token = encode_token({ user_id: @user.id })
-          render json: { user: @user, token: token }
+          render json: { user: @user, token: token }, status: :created
         else
-          render json: { error: 'Error' }
+          render json: { errors: @user.errors.full_messages }, status: :bad_request
         end
       end
 
