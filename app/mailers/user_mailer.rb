@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This class provides welcome method to user
 class UserMailer < ApplicationMailer
   default from: 'notifications@example.com'
 

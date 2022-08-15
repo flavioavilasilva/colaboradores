@@ -9,8 +9,14 @@ AllCops:
     - 'spec/*'
     - 'config/**/*'
     - 'db/*'
+    - 'db/migrate/*'
     - 'tmp/**/*'
     - '.git/**/*'
     - 'bin/*'
+    - 
   TargetRubyVersion: 2.6
   SuggestExtensions: false
+
+Metrics/BlockLength:
+  Max: 128
+  AllowedMethods: [ 'describe' ]

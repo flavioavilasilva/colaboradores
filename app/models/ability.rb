@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class provides access controller with cancan lib
 class Ability
   include CanCan::Ability
 

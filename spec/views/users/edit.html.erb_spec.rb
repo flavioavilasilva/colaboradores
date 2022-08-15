@@ -30,7 +30,8 @@ RSpec.describe 'users/edit', type: :view do
       user_regular = User.create!({ name: 'Regular User', email: 'regular_user@provedor.com', password: '123456',
                                     password_confirmation: '123456', role_id: role_regular.id })
       @another_regular_user = User.create!({ name: 'Another Regular User', email: 'another_regular_user@provedor.com',
-                                             password: '123456', password_confirmation: '123456', role_id: role_regular.id })
+                                             password: '123456', password_confirmation: '123456',
+                                             role_id: role_regular.id })
 
       assign(:user, user_regular)
     end
