@@ -1,12 +1,4 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
 
-  <p>
-    <strong>Role:</strong>
-    <%= user.role_id %>
-  </p>
-
-</div>
+<div class="col-4 themed-grid-col"><%= user.name %></div>
+<div class="col-4 themed-grid-col"><%= user.email %></div>
+<div class="col-4 themed-grid-col"><%= user.role_id %></div>

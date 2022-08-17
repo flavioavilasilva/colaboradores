@@ -51,7 +51,7 @@
           null,
           null,
           null,
-          3,
+          2,
           null,
           null,
           null,
@@ -92,7 +92,6 @@
           1,
           null,
           null,
-          1,
           1,
           1,
           null
@@ -703,13 +702,13 @@
           null,
           1,
           1,
+          1,
+          1,
           null,
           1,
-          1,
-          1,
           null,
           1,
-          67,
+          68,
           null,
           null,
           1,
@@ -755,26 +754,6 @@
           null,
           1,
           1,
-          null
-        ]
-      },
-      "/Users/flavioavila/Documents/Workspace/portabilis/desafio_cadastro_colaborador/colaboradores/spec/support/login_helpers.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
           null
         ]
       },
@@ -1039,6 +1018,39 @@
           null
         ]
       },
+      "/Users/flavioavila/Documents/Workspace/portabilis/desafio_cadastro_colaborador/colaboradores/spec/requests/application_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/flavioavila/Documents/Workspace/portabilis/desafio_cadastro_colaborador/colaboradores/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/flavioavila/Documents/Workspace/portabilis/desafio_cadastro_colaborador/colaboradores/spec/requests/roles_spec.rb": {
         "lines": [
           null,
@@ -1270,19 +1282,6 @@
           null
         ]
       },
-      "/Users/flavioavila/Documents/Workspace/portabilis/desafio_cadastro_colaborador/colaboradores/app/controllers/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
       "/Users/flavioavila/Documents/Workspace/portabilis/desafio_cadastro_colaborador/colaboradores/spec/services/create_user_service_spec.rb": {
         "lines": [
           null,
@@ -1506,10 +1505,10 @@
           null,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
           null,
@@ -1559,7 +1558,7 @@
           1,
           1,
           1,
-          1,
+          0,
           null,
           null
         ]
@@ -1709,10 +1708,10 @@
           1,
           null,
           1,
-          9,
+          10,
           6,
           null,
-          3,
+          4,
           null,
           null,
           null
@@ -1725,14 +1724,16 @@
           null,
           1,
           1,
+          1,
           null,
           1,
+          0,
           0,
           null,
           null
         ]
       }
     },
-    "timestamp": 1660545790
+    "timestamp": 1660724807
   }
 }
