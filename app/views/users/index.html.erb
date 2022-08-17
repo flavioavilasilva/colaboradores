@@ -1,14 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<div class="row mb-3 text-center">
+  <div class="col-12 themed-grid-col">
+    <%= form_for(:user, url: authenticated_root_path, html: { :method => 'GET' }) do |f| %>
+      <%= f.search_field :search, class: "form-control", placeholder: "Search..." %>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New user", new_user_path %>
+<h1>Usuarios</h1>
+<div class="row mb-3 text-center">
+  <div class="col-4 themed-grid-col">Nome</div>
+  <div class="col-4 themed-grid-col">E-mail</div>
+  <div class="col-4 themed-grid-col">Permissão</div>
+</div>
+<div class="row mb-3 text-center">
+    <% @users.each do |user| %>
+      <%= render user %>
+    <% end %>
+</div>
+
+<% if current_user.admin? %>
+  <%= link_to "Criar usuário", new_user_path %>
+<% end %>

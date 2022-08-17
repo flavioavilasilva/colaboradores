@@ -1,0 +1,22 @@
+<h1 class="h3 mb-3 fw-normal">Acessar sistema</h1> 
+
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+    <div class="form-floating">
+        <%= f.text_field :email, class: 'form-control', id: 'floatingInput', placeholder: 'name@example.com' %>
+        <label for="floatingInput">Email</label>
+    </div>
+
+    <div class="form-floating">
+        <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password" %>
+        <label for="floatingPassword">Password</label>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+        <div class="checkbox mb-3">
+            <label>
+                <%= f.check_box :remember_me %> Remember me
+            </label>
+        </div>
+    <% end %>
+    <%= f.button 'Entrar', class: "w-100 btn btn-lg btn-primary" %> 
+<% end %>

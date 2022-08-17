@@ -2,10 +2,10 @@
 
 # User model
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
   belongs_to :role
   validates :name, presence: true
+
   after_initialize :assign_role
 
   def assign_role
