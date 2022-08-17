@@ -17,11 +17,8 @@ RSpec.describe 'users/index', type: :view do
 
   it 'renders a list of users' do
     render
-    assert_select 'div#users' do |elements|
-      elements.each do |element|
-        assert_select element, 'div#user_1', 1
-        assert_select element, 'div#user_2', 1
-      end
-    end
+    assert_select 'div#name', 2
+    assert_select 'div#email', 2
+    assert_select 'div#role_id', 2
   end
 end
