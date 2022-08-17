@@ -12,7 +12,7 @@ RSpec.describe 'users/show', type: :view do
 
   it 'renders attributes in <p>' do
     render
-    expect(rendered).to match(/Name/)
+    expect(rendered).to match(/Back to users/)
     expect(rendered).to match(//)
   end
 end
