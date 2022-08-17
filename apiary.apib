@@ -1,0 +1,119 @@
+FORMAT: 1A
+HOST: https://localhost:3000/api/v1
+
+# Users 
+Simples API com recursos de criação, listagem e remoção de usuários
+
+## Users resources [/user]
+
+### Show user information [POST /login/]
+
+Esse endpoint fornece informações de um usuário já existente quando fornecidos dados de email e password, 
+você terá informações importantes como o token no retorno dela. 
+
++ Request (application/json) 
+
+        {
+            "email": "admin@admin.com",
+            "password": "strong_password"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "user": {
+                    "id": 1,
+                    "name": "User",
+                    "role_id": 1,
+                    "created_at": "2022-08-13T19:28:54.883Z",
+                    "updated_at": "2022-08-13T19:28:54.883Z",
+                    "email": "admin@admin.com"
+                },
+                "token": "xsdsfjksnfdjknsvdjknvsknfskjnfksdnfkjsdnfksnjdfkjs"
+            }
+
+### List all user [GET /users]
+
+Endpoint para listagem de usuários, podem ser filtrados por nome, email e permissão. Necessita um token admin para tal ação.
+
++ Request (application/json) 
+
+    + Headers
+
+            Authorization: Token jdsjkhfdaskjhckajs
+
+    + Body
+            
+            { 
+                "query": { "name": "User1", "email": "user1@provedor.com" }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "id": 1,
+                    "name": "User1",
+                    "email": "user1@provedor.com",
+                    "role": "Admin"
+                }
+            ]
+
+
+### Create a new user [POST /users]
+
+Endpoint para criação de novo usuário, necessita um token admin para tal ação.
+
++ Request (application/json) 
+
+    + Headers
+
+            Authorization: Token jdsjkhfdaskjhckajs
+
+    + Body
+
+            {
+                "name": "User", 
+                "email": "user@outlook.com", 
+                "password": "123456", 
+                "password_confirmation": "123456",
+                "role_id": 1
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "user": {
+                    "id": 34,
+                    "name": "Flavio Avila 6",
+                    "role_id": 22,
+                    "created_at": "2022-08-15T06:41:11.089Z",
+                    "updated_at": "2022-08-15T06:41:11.089Z",
+                    "email": "fserser6@outlook.com"
+                },
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNH0.SRygp-SyA-nud9cM2rlu4PhAe_uaFjNcdpnLuKe7S1Y"
+            }
+
+### Delete a user [DELETE /users/1]
+
+Endpoint para remoção usuário, necessita um token admin para tal ação.
+
++ Request (application/json) 
+
+    + Headers
+
+            Authorization: Token jdsjkhfdaskjhckajs
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "message": "Delete user success"
+            }
