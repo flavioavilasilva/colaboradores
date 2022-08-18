@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
-      post "/login", to: "users#login"
-      get "/auto_login", to: "users#auto_login" 
+      post "/token", to: "users#token"
+      #get "/auto_login", to: "users#auto_login" 
       devise_for :users,
              controllers: {
                  sessions: 'api/v1/sessions',

@@ -8,7 +8,11 @@ RSpec.describe 'Api::V1::Users', type: :request do
       let(:user) { create(:user, name: 'João') }
       let(:valid_token) { JWT.encode({ user_id: user.id }, 's3cr3t') }
 
-      context 'when has not query params' do
+      context 'when has not search params' do
+        before do
+          expect_any_instance_of(SearchUsersService).to receive(:call).and_return([user])
+        end
+
         it 'returns a successful response' do
           get api_v1_users_url, headers: { authorization: "token #{valid_token}" }, as: :json
           json_response = JSON.parse(response.body)
@@ -21,12 +25,15 @@ RSpec.describe 'Api::V1::Users', type: :request do
         end
       end
 
-      context 'when has query params' do
+      context 'when has search params' do
+        before do
+          expect_any_instance_of(SearchUsersService).to receive(:call).and_return([user])
+        end
+
         it 'returns a successful response' do
-          params = { query: { name: 'João' } }
+          params = { search: 'João' }
           get api_v1_users_url, params: params, headers: { authorization: "token #{valid_token}" }, as: :json
           json_response = JSON.parse(response.body)
-
           expect(response).to be_successful
           expect(json_response.size).to eq 1
           expect(json_response.first['name']).to eq(user[:name])
