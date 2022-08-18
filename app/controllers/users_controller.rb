@@ -6,6 +6,12 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.all
+    @users = SearchUsersService.new(query_params).call
+  end
+
+  private
+
+  def query_params
+    params.permit(:search, :user)
   end
 end
