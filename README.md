@@ -98,7 +98,7 @@ POST - (http://localhost:3000/api/v1/token)
 
 body - { "email": "admin@admin.com", "password": "admin1" }
 ```
-Um dos atributos que deverá retornar será "token", copie e guarde para fazer outras requisições.
+Um dos atributos que retornará é o "token", copie e guarde para fazer outras requisições.
 
 Para mais detalhes e outras rotas disponiveis, checar o arquivo (apyary.apib) dentro desse projeto.
 
