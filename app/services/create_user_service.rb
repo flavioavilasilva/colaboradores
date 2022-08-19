@@ -11,7 +11,12 @@ class CreateUserService
   def call
     user = User.new(user_params)
 
-    UserMailer.with(user: user).welcome_email.deliver_later if user.save
+    begin
+      UserMailer.with(user: user).welcome_email.deliver_later if user.save
+    rescue Redis::CannotConnectError
+      # here is a good idea notification the error to airbrake or something like
+      puts 'Redis connection error'
+    end
 
     user
   end

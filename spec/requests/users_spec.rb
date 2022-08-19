@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/roles', type: :request do
+RSpec.describe '/users', type: :request do
   describe 'GET /index' do
     context 'with a valid login' do
       let(:user_to_login) { create(:user, name: 'Adailton', email: 'adailton@provedor.com') }
