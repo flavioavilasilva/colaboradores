@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe '/roles', type: :request do
-  describe 'DELETE /user/:id' do
+RSpec.describe '/users', type: :request do
+  describe 'DELETE /destroy' do
     let(:user_admin_to_login) { create(:user, name: 'Adailton', email: 'adailton@provedor.com') }
     let(:user_to_delete) { create(:user, name: 'Zileide', email: 'zileide@provedor.com') }
 
