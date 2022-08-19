@@ -43,3 +43,5 @@
 /coverage/index.html
 
 .byebug_history
+
+.env
