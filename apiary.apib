@@ -6,7 +6,7 @@ Simples API com recursos de criação, listagem e remoção de usuários
 
 ## Users resources [/user]
 
-### Show user information [POST /token]
+### Informações de usuário(token) [POST /token]
 
 Esse endpoint fornece informações de um usuário já existente quando fornecidos dados de email e password, 
 você terá informações importantes como o token no retorno dela. 
@@ -34,7 +34,7 @@ você terá informações importantes como o token no retorno dela.
                 "token": "xsdsfjksnfdjknsvdjknvsknfskjnfksdnfkjsdnfksnjdfkjs"
             }
 
-### List all user [GET /users]
+### Listar usuários [GET /users]
 
 Endpoint para listagem de usuários, podem ser filtrados por nome, email e permissão. Necessita um token admin para tal ação.
 
@@ -64,7 +64,7 @@ Endpoint para listagem de usuários, podem ser filtrados por nome, email e permi
             ]
 
 
-### Create a new user [POST /users]
+### Criar novo usuário [POST /users]
 
 Endpoint para criação de novo usuário, necessita um token admin para tal ação.
 
@@ -100,7 +100,7 @@ Endpoint para criação de novo usuário, necessita um token admin para tal aç�
                 "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNH0.SRygp-SyA-nud9cM2rlu4PhAe_uaFjNcdpnLuKe7S1Y"
             }
 
-### Delete a user [DELETE /users/1]
+### Deletar um usuário [DELETE /users/1]
 
 Endpoint para remoção usuário, necessita um token admin para tal ação.
 
