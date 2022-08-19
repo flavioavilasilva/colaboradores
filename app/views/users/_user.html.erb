@@ -1,3 +1,11 @@
-<div id='name' class="col-4 themed-grid-col"><%= user.name %></div>
-<div id='email' class="col-4 themed-grid-col"><%= user.email %></div>
-<div id='role_id' class="col-4 themed-grid-col"><%= user.role_id %></div>
+<div id='name' class="col-3 themed-grid-col"><%= user.name %></div>
+<div id='email' class="col-3 themed-grid-col"><%= user.email %></div>
+<div id='role_id' class="col-3 themed-grid-col"><%= user.role.name %></div>
+<div id='btn-excluir' class="col-3 themed-grid-col"> 
+  <% if current_user.admin? %>
+    <%= form_with url: "/users/#{user.id}", method: :delete do |form| %>
+      <%= form.submit :Excluir, :class => "btn btn-outline-secondary btn-lg px-4"%>
+    <% end %>
+  <% end %>
+</div>
+

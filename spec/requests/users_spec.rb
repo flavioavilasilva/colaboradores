@@ -23,7 +23,7 @@ RSpec.describe '/roles', type: :request do
     end
 
     context 'without a valid login' do
-      it 'redirects to login and status 302' do
+      it 'redirects and status 302' do
         get users_url
         expect(response.status).to eq 302
       end
