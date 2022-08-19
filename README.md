@@ -93,9 +93,11 @@ Considerar checar o arquivo db/seeds.rb para confirmar as informações criadas 
 
 Para recuperar o token do admin criado no seed, em um API client como Insominia (https://insomnia.rest/download) ou via bash via curl, você pode executar a seguinte requisição na API
 
-POST (http://localhost:3000/api/v1/token)
-body - { "email": "admin@admin.com", "password": "admin1" }
+```
+POST - (http://localhost:3000/api/v1/token)
 
+body - { "email": "admin@admin.com", "password": "admin1" }
+```
 Um dos atributos que deverá retornar será "token", copie e guarde para fazer outras requisições.
 
 Para mais detalhes e outras rotas disponiveis, checar o arquivo (apyary.apib) dentro desse projeto.
