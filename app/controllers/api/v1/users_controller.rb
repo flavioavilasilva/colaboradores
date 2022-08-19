@@ -9,7 +9,10 @@ module Api
 
       # GET api/v1/users?search=xpto
       def index
-        @users = SearchUsersService.new(query_params).call
+        cache_key_with_version = "api/v1/users/index/#{query_params}"
+        @users = Rails.cache.fetch(cache_key_with_version, expires_in: 5.minutes) do
+          SearchUsersService.new(query_params).call
+        end
       end
 
       # POST api/v1/users
