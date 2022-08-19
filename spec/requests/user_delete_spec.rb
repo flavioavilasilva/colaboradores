@@ -16,14 +16,14 @@ RSpec.describe '/users', type: :request do
         sign_in(user_admin_to_login)
 
         delete "/users/#{user_to_delete.id}"
-        expect(response.body).to include('www.example.com/users')
+        expect(response).to redirect_to(users_url)
       end
     end
 
     context 'without a valid login' do
       it 'redirects to users sign in' do
         delete "/users/#{user_to_delete.id}"
-        expect(response.body).to include('www.example.com/users/sign_in')
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
   end

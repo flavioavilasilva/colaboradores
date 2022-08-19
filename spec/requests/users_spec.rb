@@ -14,7 +14,7 @@ RSpec.describe '/users', type: :request do
         expect_any_instance_of(SearchUsersService).to receive(:call).and_return([return_list_users])
       end
 
-      it 'renders a successful response' do
+      it 'renders a successful response ans redirect to users' do
         sign_in(user_to_login)
 
         get users_url
@@ -25,7 +25,7 @@ RSpec.describe '/users', type: :request do
     context 'without a valid login' do
       it 'redirects and status 302' do
         get users_url
-        expect(response.status).to eq 302
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
   end
