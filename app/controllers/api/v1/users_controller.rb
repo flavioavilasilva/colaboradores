@@ -43,10 +43,6 @@ module Api
         end
       end
 
-      # def auto_login
-      #   render json: @user
-      # end
-
       private
 
       def query_params

@@ -72,14 +72,21 @@ Rails.application.configure do
 
   #Needs configure gmail smtp
   config.action_mailer.delivery_method = :smtp
+  
+  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'example.com',
-    user_name:            '<username>',
-    password:             '<password>',
+    user_name:            'flavio.avila.silva@gmail.com',
+    password:             'jwtmsmqfswxcsnsg',
     authentication:       'plain',
-    enable_starttls_auto: true,
+    #enable_starttls_auto: true,
     open_timeout:         5,
-    read_timeout:         5 }
+    read_timeout:         5 
+  }
+  
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.active_job.queue_adapter = :sidekiq
 end

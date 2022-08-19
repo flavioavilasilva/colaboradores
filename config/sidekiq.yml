@@ -1,0 +1,4 @@
+:concurrency: 1
+:queues:
+  - app_default
+  - mailers
