@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = SearchUsersService.new(query_params).call
+    cache_key_with_version = "users/index/#{query_params}"
+    @users = Rails.cache.fetch(cache_key_with_version, expires_in: 5.minutes) do
+      SearchUsersService.new(query_params).call
+    end
   end
 
   private

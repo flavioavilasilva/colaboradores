@@ -10,7 +10,7 @@ Esta aplicacão tem como maior objetivo explorar conhecimentos para o desafio de
 
 Topics:
 
-- Dependencias
+- Stack
 - Construindo o container
 - Executando o rubocop como lint de código
 - Executando os testes com Rspec
@@ -20,9 +20,13 @@ Topics:
 - Parar a execução do docker com a aplicação
 - Créditos
 
-## Dependencias
+## Stack
 
-Docker/Docker-compose (https://docs.docker.com/get-docker/)
+Docker/Docker-compose (https://docs.docker.com/get-docker/) - Criação de container para desenvolvimento
+Redis - Usando como banco de cache e dependência do Sidekiq
+Sidekiq - Para processar jobs em background como envio de e-mail assincrono por exemplo
+
+***Antes de começar, existe um arquivo .env.example, ele contem valores para variaveis de ambiente, renomei ele para .env***
 
 ## Construindo o container 
 
@@ -57,7 +61,7 @@ Após executar os testes pelo rspec, um arquivos é criado na pasta 'coverage/in
 
 ## Executando a aplicação em um docker
 
-Para popular o banco local com informações iniciais como um admin válido, execute:
+Para popular o banco local com informações iniciais como um admin válido e um usuário regular, execute:
 
 ```bash
 docker-compose run --no-deps web rake db:seed
@@ -75,25 +79,30 @@ Agora voce deve ter um container executando, para verificar execute o seguinte c
 docker ps
 ```
 
-A aplicação deve estar exposta na url (http://localhost:3000/)
+A aplicação deve estará exposta na url (http://localhost:3000/)
+
+A pagina root direciona para o login, poderá logar com o usuário (email: admin@admin.com) e senha (123456), conseguirá fazer ações de listagem com busca de usuários por nome ou e-mail, além de deletar usuário, desde que seja admin, a senha acima é de uma admin.
+
+Logando com usuario regular usuário (email: regular@regular.com) e senha (123456), deverá apenas conseguir listar usuários.
 
 ## Informações uteis sobre a API
 
 A API precisa de um token de autorização para a maioria das rotas, token que tem niveis de permissões, sendo usuário admin capaz de executar qualquer ação na API e regular apenas leitura.
 
-Quando executou o comando "docker-compose run --no-deps web rake db:seed" anteriormente, foram criados 2 usuários, sendo um admin e outro regular:
+Considerar checar o arquivo db/seeds.rb para confirmar as informações criadas anteriormente.
 
-Os dados do admin são o seguinte:
-email: admin@admin.com
-senha: 123456
+Para recuperar o token do admin criado no seed, em um API client como Insominia (https://insomnia.rest/download) ou via bash via curl, você pode executar a seguinte requisição na API
 
-Considerar checar o arquivo db/seeds.rb para confirmar as informações.
+POST (http://localhost:3000/api/v1/token)
+body - { "email": "admin@admin.com", "password": "admin1" }
 
-Em um API client como Insominia (https://insomnia.rest/download) ou via bash via curl, você pode executar as requisições na API, para mais detalhes, checar o arquivo (apyary.apib) dentro desse projeto.
+Um dos atributos que deverá retornar será "token", copie e guarde para fazer outras requisições.
+
+Para mais detalhes e outras rotas disponiveis, checar o arquivo (apyary.apib) dentro desse projeto.
 
 É importante executar o endpoint de login passando as informações de usuário admin acima, esse endpoint retornará o token para executar outros endpoints que possuem controle de permissões e deverá ser informado no header Authorization.
 
-## Parar a execução do docker com a aplicação
+## Remover os containers
 
 Para remover o container caso necessário, execute o comando:
 

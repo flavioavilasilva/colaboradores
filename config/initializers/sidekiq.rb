@@ -11,3 +11,5 @@ Sidekiq.configure_client do |config|
     port: ENV['REDIS_PORT'] || '6379'
   }
 end
+
+Sidekiq.default_job_options['retry'] = 12
