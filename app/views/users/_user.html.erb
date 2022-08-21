@@ -2,10 +2,16 @@
 <div id='email' class="col-3 themed-grid-col"><%= user.email %></div>
 <div id='role_id' class="col-3 themed-grid-col"><%= user.role.name %></div>
 <div id='btn-excluir' class="col-3 themed-grid-col"> 
-  <% if current_user.admin? %>
+  <% if current_user.admin? && user.id != current_user.id %>
     <%= form_with url: "/users/#{user.id}", method: :delete do |form| %>
-      <%= form.submit :Excluir, :class => "btn btn-outline-secondary btn-lg px-4"%>
+      <%= form.submit :Excluir, :class => "btn btn-outline-secondary btn-lg px-4", onclick:"show_alert();" %>
     <% end %>
   <% end %>
 </div>
+
+<script>
+  function show_alert() {
+    confirm('Deseja realmente excluir este usuário ?');
+  }
+</script>
 

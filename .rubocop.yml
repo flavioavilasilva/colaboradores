@@ -13,7 +13,6 @@ AllCops:
     - 'tmp/**/*'
     - '.git/**/*'
     - 'bin/*'
-    - 
   TargetRubyVersion: 2.6
   SuggestExtensions: false
 
