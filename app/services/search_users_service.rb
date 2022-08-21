@@ -12,6 +12,7 @@ class SearchUsersService
     return User.all if query_params.nil? || query_params[:search].blank?
 
     params = SearchParamsAdapter.new(query_params).call
+
     query_user = User.where(params) if params.present?
 
     query_user.order(order)

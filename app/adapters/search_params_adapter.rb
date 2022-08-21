@@ -33,10 +33,10 @@ class SearchParamsAdapter
   end
 
   def key_name
-    { name: search_params[:search].to_s }
+    "name like '%#{search_params[:search]}%'"
   end
 
   def key_email
-    { email: search_params[:search].to_s }
+    "email like '%#{search_params[:search]}%'"
   end
 end
