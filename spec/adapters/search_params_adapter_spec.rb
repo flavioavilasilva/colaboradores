@@ -11,7 +11,7 @@ RSpec.describe SearchParamsAdapter, type: :service do
     subject { SearchParamsAdapter.new(search).call }
 
     it 'return the expected key(name)' do
-      expected_params = { name: 'Flavio' }
+      expected_params = "name like '%Flavio%'"
       expect(subject).to eq expected_params
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe SearchParamsAdapter, type: :service do
     subject { SearchParamsAdapter.new(search).call }
 
     it 'return the expected key(email)' do
-      expected_params = { email: 'flavio@provedor.com' }
+      expected_params = "email like '%flavio@provedor.com%'"
       expect(subject).to eq expected_params
     end
   end
