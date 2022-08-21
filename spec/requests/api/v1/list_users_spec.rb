@@ -6,7 +6,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'GET api/v1/users' do
     context 'when headers has a valid token' do
       let(:user) { create(:user, name: 'João Pedro') }
-      let(:valid_token) { JWT.encode({ user_id: user.id }, 's3cr3t') }
+      let(:valid_token) { JWT.encode({ user_id: user.id }, Rails.application.secrets.secret_key_base) }
 
       context 'when has not search params' do
         before do

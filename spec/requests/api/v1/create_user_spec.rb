@@ -8,7 +8,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
     let(:user) { create(:user, role: role) }
 
     context 'when headers has a valid token' do
-      let(:valid_token_admin) { JWT.encode({ user_id: user.id }, 's3cr3t') }
+      let(:valid_token_admin) { JWT.encode({ user_id: user.id }, Rails.application.secrets.secret_key_base) }
       let(:valid_attributes) do
         { name: 'User', email: 'user@provedor.com', password: '123456', password_confirmation: '123456',
           role_id: role.id }
@@ -29,7 +29,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
       context 'when the token is of a regular user' do
         let(:role) { create(:role, name: 'Regular') }
         let(:user) { create(:user, role: role) }
-        let(:valid_token_regular) { JWT.encode({ user_id: user.id }, 's3cr3t') }
+        let(:valid_token_regular) { JWT.encode({ user_id: user.id }, Rails.application.secrets.secret_key_base) }
 
         it 'returns a unsucessful status code (403 - forbidden)' do
           post api_v1_users_url, params: valid_attributes,

@@ -6,7 +6,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'DELETE api/v1/users/:id' do
     let(:role) { create(:role, name: 'Admin') }
     let(:user) { create(:user, role: role) }
-    let(:token) { JWT.encode({ user_id: user.id }, 's3cr3t') }
+    let(:token) { JWT.encode({ user_id: user.id }, Rails.application.secrets.secret_key_base) }
     let(:user_to_be_deleted) { create(:user, role: role, email: 'another@provedor.com') }
 
     context 'when headers has a valid token' do

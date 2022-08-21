@@ -31,7 +31,7 @@ module Api
       def destroy
         @user = User.find(params[:id])
         @user.destroy
-        render json: { message: 'Delete user success' }
+        render json: { message: 'Usuário excluido com sucesso!' }
       end
 
       # POST api/v1/get-token
@@ -42,7 +42,7 @@ module Api
           token = encode_token({ user_id: @user.id })
           render json: { user: @user, token: token }
         else
-          render json: { error: 'Invalid email or password' }
+          render json: { error: 'E-mail ou password incorretos' }
         end
       end
 
