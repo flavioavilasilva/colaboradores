@@ -44,12 +44,6 @@ Endpoint para listagem de usuários, podem ser filtrados por nome, email e permi
 
             Authorization: Token jdsjkhfdaskjhckajs
 
-    + Body
-            
-            { 
-                "query": { "name": "User1", "email": "user1@provedor.com" }
-            }
-
 + Response 200 (application/json)
 
     + Body
@@ -59,7 +53,7 @@ Endpoint para listagem de usuários, podem ser filtrados por nome, email e permi
                     "id": 1,
                     "name": "User1",
                     "email": "user1@provedor.com",
-                    "role": "Admin"
+                    "role_id": 1
                 }
             ]
 
