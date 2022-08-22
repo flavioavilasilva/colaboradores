@@ -11,6 +11,7 @@ Esta aplicacão tem como maior objetivo explorar conhecimentos para o desafio de
 Topics:
 
 - Stack
+- Pontapé inicial
 - Construindo o container
 - Criação do banco
 - Executando os testes com Rspec
@@ -23,15 +24,24 @@ Topics:
 
 ## Stack
 
-Docker/Docker-compose (https://docs.docker.com/get-docker/) - Criação de container para desenvolvimento
-Redis - Usando como banco de cache e dependência do Sidekiq
-Sidekiq - Para processar jobs em background como envio de e-mail assincrono por exemplo
+- Docker/Docker-compose (https://docs.docker.com/get-docker/) - Criação de container para desenvolvimento
+- Redis - Usando como banco de cache e dependência do Sidekiq
+- Sidekiq - Para processar jobs em background como envio de e-mail assincrono por exemplo
+
+## Pontapé inicial
 
 *** Antes de começar, existe um arquivo .env.example, ele contem valores para variaveis de ambiente, copie e renomeie para .env ***
+
+Executar o bundler para instalar as gems do projeto:
+
+```bash
+bundle install
+```
 
 ## Construindo o container 
 
 Para fazer build da imagem do container, basta executar o seguinte comando na raiz da aplicação:
+
 ```bash
 docker-compose build
 ```
@@ -40,7 +50,8 @@ docker-compose build
 
 Para fazer build da imagem do container, basta executar o seguinte comando na raiz da aplicação:
 ```bash
-docker-compose run --rm --no-deps web rake db:create && rake db:migrate
+docker-compose run --rm --no-deps web bundler exec rails db:create 
+docker-compose run --rm --no-deps web bundler exec rails db:migrate
 ```
 
 ## Executando os testes com Rspec
@@ -48,7 +59,7 @@ docker-compose run --rm --no-deps web rake db:create && rake db:migrate
 Para executar os testes com o Rspec, basta executar o seguinte comando na raiz da aplicação:
 
 ```bash
-docker-compose run --rm --no-deps web rspec
+docker-compose run --rm --no-deps web bundler exec rspec
 ```
 
 ## Checando a cobertura de testes da aplicacão
@@ -64,7 +75,7 @@ Após executar os testes pelo rspec, um arquivos é criado na pasta 'coverage/in
 Para checar alguma inconformidade de lint de código, basta executar o rubocop:
 
 ```bash
-docker-compose run --rm --no-deps web rubocop
+docker-compose run --rm --no-deps web bundler exec rubocop
 ```
 
 ## Executando a aplicação em um docker
@@ -72,7 +83,7 @@ docker-compose run --rm --no-deps web rubocop
 Para popular o banco local com informações iniciais como um admin válido e um usuário regular, execute:
 
 ```bash
-docker-compose run --rm --no-deps web rake db:seed
+docker-compose run --rm --no-deps web bundler exec rails db:seed
 ```
 
 Para executar a aplicação no docker, execute:
