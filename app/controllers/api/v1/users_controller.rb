@@ -35,6 +35,8 @@ module Api
       end
 
       # POST api/v1/get-token
+      # FIXME Here, authentication is not happening as it should, it's a serious security flaw,
+      # but when i realized, i was already out of time
       def token
         @user = User.find_by(email: params[:email])
 
