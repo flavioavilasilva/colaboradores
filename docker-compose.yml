@@ -10,16 +10,16 @@ services:
     depends_on:
       - redis
     env_file: .env
+
   redis:
     image: redis:5.0.7
+
   sidekiq:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     command: bash -c "bundle exec sidekiq -q default -q mailers"
     depends_on:
       - web      
       - redis
     volumes:
-      - .:/app
+      - .:/colaboradores
     env_file: .env
