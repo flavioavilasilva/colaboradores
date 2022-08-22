@@ -12,9 +12,10 @@ Topics:
 
 - Stack
 - Construindo o container
-- Executando o rubocop como lint de código
+- Criação do banco
 - Executando os testes com Rspec
 - Checando a cobertura de testes da aplicacão
+- Executando o rubocop como lint de código
 - Executando a aplicação em um docker
 - Rotas uteis da API
 - Parar a execução do docker com a aplicação
@@ -26,7 +27,7 @@ Docker/Docker-compose (https://docs.docker.com/get-docker/) - Criação de conta
 Redis - Usando como banco de cache e dependência do Sidekiq
 Sidekiq - Para processar jobs em background como envio de e-mail assincrono por exemplo
 
-***Antes de começar, existe um arquivo .env.example, ele contem valores para variaveis de ambiente, renomei ele para .env***
+*** Antes de começar, existe um arquivo .env.example, ele contem valores para variaveis de ambiente, copie e renomeie para .env ***
 
 ## Construindo o container 
 
@@ -35,12 +36,11 @@ Para fazer build da imagem do container, basta executar o seguinte comando na ra
 docker-compose build
 ```
 
-## Executando o rubocop como lint de código
+## Criação do banco
 
-Para checar alguma inconformidade de lint de código, basta executar o rubocop:
-
+Para fazer build da imagem do container, basta executar o seguinte comando na raiz da aplicação:
 ```bash
-docker-compose run --no-deps web rubocop
+docker-compose run --rm --no-deps web rake db:create && rake db:migrate
 ```
 
 ## Executando os testes com Rspec
@@ -48,7 +48,7 @@ docker-compose run --no-deps web rubocop
 Para executar os testes com o Rspec, basta executar o seguinte comando na raiz da aplicação:
 
 ```bash
-docker-compose run --no-deps web rspec
+docker-compose run --rm --no-deps web rspec
 ```
 
 ## Checando a cobertura de testes da aplicacão
@@ -59,18 +59,26 @@ Após executar os testes pelo rspec, um arquivos é criado na pasta 'coverage/in
  open coverage/index.html
 ```
 
+## Executando o rubocop como lint de código
+
+Para checar alguma inconformidade de lint de código, basta executar o rubocop:
+
+```bash
+docker-compose run --rm --no-deps web rubocop
+```
+
 ## Executando a aplicação em um docker
 
 Para popular o banco local com informações iniciais como um admin válido e um usuário regular, execute:
 
 ```bash
-docker-compose run --no-deps web rake db:seed
+docker-compose run --rm --no-deps web rake db:seed
 ```
 
-Para criar uma instancia da imagem e executar a aplicação em background
+Para executar a aplicação no docker, execute:
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 Agora voce deve ter um container executando, para verificar execute o seguinte comando:
